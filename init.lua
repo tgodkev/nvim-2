@@ -46,6 +46,12 @@ vim.g.maplocalleader = ' '
 
 
 
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+    pattern = "*.postcss",
+    command = "setfiletype css"
+})
+
+
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    https://github.com/folke/lazy.nvim
