@@ -247,6 +247,7 @@ require('lazy').setup({
   { 'numToStr/Comment.nvim', opts = {} },
 
   -- Fuzzy Finder (files, lsp, etc)
+
   {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
@@ -375,6 +376,32 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
+--#region
+-- Function to create a new file
+function CreateNewFile()
+  local input = vim.fn.input("File Path: ")
+  if input and #input > 0 then
+    -- Concatenate the current working directory with the input if needed
+    local filePath = vim.fn.getcwd() .. "/" .. input
+    vim.cmd("edit " .. filePath)
+    vim.cmd("write")
+  end
+end
+
+-- Function to create a new directory
+function CreateNewDirectory()
+  local input = vim.fn.input("Directory Path: ")
+  if input and #input > 0 then
+    -- Concatenate the current working directory with the input if needed
+    local dirPath = vim.fn.getcwd() .. "/" .. input
+    vim.fn.mkdir(dirPath, "p")
+    print("Directory created: " .. dirPath)
+  end
+end
+
+
+
+
 require('telescope').setup {
   defaults = {
     mappings = {
@@ -388,6 +415,10 @@ require('telescope').setup {
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
+
+-- Key mappings for custom functions
+vim.api.nvim_set_keymap('n', '<leader>nf', '<cmd>lua CreateNewFile()<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<leader>nd', '<cmd>lua CreateNewDirectory()<CR>', {noremap = true, silent = true})
 
 -- Telescope live_grep in git root
 -- Function to find the git root directory based on the current buffer's path
