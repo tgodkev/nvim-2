@@ -173,13 +173,36 @@ require('lazy').setup({
   --  end,
   -- },
 
-  {
-    "rebelot/kanagawa.nvim",
-    lazy = false,
-    config = function()
-      vim.cmd("colorscheme kanagawa")
-    end
-  },
+ --  {
+ --   "rebelot/kanagawa.nvim",
+  -- lazy = false,
+ -- config = function()
+  --  vim.cmd.colorscheme "kanagawa-wave"
+  --   end
+  --},
+
+  -- Assuming you've already set up Packer and other plugins above
+
+{
+  "folke/tokyonight.nvim",
+  lazy = false,
+  priority = 1000,
+  opts = {},
+  config = function()
+
+    vim.g.tokyonight_italic_functions = true
+    vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal" }
+    vim.g.tokyonight_dark_sidebar = true
+    vim.g.tokyonight_dark_float = true
+    vim.g.tokyonight_colors = { hint = "orange", error = "#ff0000" }
+    print("Tokyo Night theme loaded", vim.g.tokyonight_style)
+    vim.cmd[[colorscheme tokyonight-night]] -- Apply the colorscheme
+  end
+},
+
+
+
+
   {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
@@ -187,7 +210,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'kanagawa',
+        theme = 'tokyonight',
         component_separators = '|',
         section_separators = '',
       },
