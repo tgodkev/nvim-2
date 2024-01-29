@@ -197,7 +197,7 @@ require('lazy').setup({
       print("Tokyo Night theme loaded", vim.g.tokyonight_style)
       vim.cmd [[colorscheme tokyonight-night]] -- Apply the colorscheme
 
-     -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+    -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
      -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
     end
   },
