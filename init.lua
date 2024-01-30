@@ -419,9 +419,7 @@ require('telescope').setup {
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
 
--- Key mappings for custom functions
-vim.api.nvim_set_keymap('n', '<leader>nf', '<cmd>lua CreateNewFile()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>nd', '<cmd>lua CreateNewDirectory()<CR>', { noremap = true, silent = true })
+
 
 -- Telescope live_grep in git root
 -- Function to find the git root directory based on the current buffer's path
