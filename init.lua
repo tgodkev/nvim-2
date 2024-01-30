@@ -41,7 +41,17 @@ require('lazy').setup({
   {
     'nvim-tree/nvim-web-devicons'
   },
-
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+      -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+    }
+  }
+  ,
 
 
   {
@@ -208,7 +218,7 @@ require('lazy').setup({
       vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal" }
       vim.g.tokyonight_dark_sidebar = true
       vim.g.tokyonight_dark_float = true
-      vim.g.tokyonight_colors = { hint = "orange", error = "#ff0000" } 
+      vim.g.tokyonight_colors = { hint = "orange", error = "#ff0000" }
       vim.cmd [[colorscheme tokyonight-night]] -- Apply the colorscheme
 
       -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -725,23 +735,26 @@ cmp.setup {
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
---
 
+
+-- below is neotree stuff
+vim.api.nvim_set_keymap('n', '<leader>n', '<Cmd>Neotree toggle<CR>', {noremap = true, silent = true})
 
 -- below is notify stuff
 
 
 
 
+
 vim.notify = require("notify")
 local function onSave()
-    vim.notify("File saved successfully!", "info", {
-        title = "Success",
-        timeout = 3000
-    })
+  vim.notify("File saved successfully!", "info", {
+    title = "Success",
+    timeout = 3000
+  })
 end
 
 
 vim.api.nvim_create_autocmd("BufWritePost", {
-    callback = onSave
+  callback = onSave
 })
