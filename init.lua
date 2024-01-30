@@ -734,4 +734,14 @@ cmp.setup {
 
 
 vim.notify = require("notify")
+local function onSave()
+    vim.notify("File saved successfully!", "info", {
+        title = "Success",
+        timeout = 3000
+    })
+end
 
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+    callback = onSave
+})
