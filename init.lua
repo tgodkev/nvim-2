@@ -38,6 +38,14 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
 
+  {
+    'rcarriga/nvim-notify'
+  },
+  {
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    opts = {} -- this is equalent to setup({}) function
+  },
 
   {
     "github/copilot.vim",
@@ -197,8 +205,8 @@ require('lazy').setup({
       print("Tokyo Night theme loaded", vim.g.tokyonight_style)
       vim.cmd [[colorscheme tokyonight-night]] -- Apply the colorscheme
 
-    -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-     -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+      -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+      -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
     end
   },
 
