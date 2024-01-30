@@ -40,9 +40,9 @@ require('lazy').setup({
   {
     'nvim-tree/nvim-web-devicons'
   },
-  {
-    'rcarriga/nvim-notify'
-  },
+
+
+
   {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
