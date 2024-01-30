@@ -1,6 +1,7 @@
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
+
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -49,6 +50,10 @@ require('lazy').setup({
     opts = {} -- this is equalent to setup({}) function
   },
 
+  {
+    'rcarriga/nvim-notify',
+  }
+  ,
   {
     "github/copilot.vim",
   },
@@ -203,8 +208,7 @@ require('lazy').setup({
       vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal" }
       vim.g.tokyonight_dark_sidebar = true
       vim.g.tokyonight_dark_float = true
-      vim.g.tokyonight_colors = { hint = "orange", error = "#ff0000" }
-      print("Tokyo Night theme loaded", vim.g.tokyonight_style)
+      vim.g.tokyonight_colors = { hint = "orange", error = "#ff0000" } 
       vim.cmd [[colorscheme tokyonight-night]] -- Apply the colorscheme
 
       -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -721,3 +725,5 @@ cmp.setup {
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+--
+vim.notify = require("notify")
