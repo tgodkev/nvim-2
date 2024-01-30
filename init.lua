@@ -732,3 +732,6 @@ cmp.setup {
 
 
 
+
+vim.notify = require("notify")
+
